@@ -1,4 +1,4 @@
-초기세팅
+## 초기세팅
 ```angular2html
 pip install -r requirements.txt
 ```
@@ -12,9 +12,18 @@ pip install -r requirements.txt
 - SQLAlchemy==2.0.31
 
 
-서버실행
+---
+
+## 서버실행
 ```angular2html
 uvicorn app.main:app --reload
 ```
+---
+
+## 스웨거 주소
+```angular2html
+http://127.0.0.1:8000/docs
+```
+
 
 
