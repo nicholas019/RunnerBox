@@ -1,4 +1,9 @@
 초기세팅
+```angular2html
+pip install -r requirements.txt
+```
+
+ 
 - python 3.11
 - databases==0.9.0
 - aiosqlite==0.20.0
@@ -6,8 +11,10 @@
 - uvicorn==0.30.3
 - SQLAlchemy==2.0.31
 
-  pip install -r requirements.txt
 
 서버실행
-- uvicorn app.main:app --reload
+```angular2html
+uvicorn app.main:app --reload
+```
+
 
