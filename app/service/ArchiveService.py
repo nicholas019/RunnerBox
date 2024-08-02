@@ -7,8 +7,30 @@ class ArchiveService:
     def __init__(self, db: Session):
         self.archive_repository = ArchiveRepository(db)
 
+    """
+    메인 페이지에서 가장 가까운 지하철 역을 찾는 함수
+    """
     def get_near_archive(self, latitude: float, longitude: float):
         archive_all_list = self._get_archive_all()
+
+        return self._format_lacation(archive_all_list, latitude, longitude)
+
+    """
+    역이름으로 보관소 위치 검색
+    """
+    def search_subway_name(self, subway_name: str):
+        return self.archive_repository.get_archive_by_subway_name(subway_name)
+
+    """
+    모든 보관소 리스트 조회
+    """
+    def _get_archive_all(self):
+        return self.archive_repository.get_archive_all()
+
+    """
+    거리측정 결과 포맷팅 함수
+    """
+    def _format_lacation(self, archive_all_list, latitude, longitude):
         result = {"subway_name": "", "exit_number": "", "location": "",
                   "start_point": {"latitude": latitude, "longitude": longitude},
                   "end_point": {"latitude": 0, "longitude": 0}, "distance": 100000}
@@ -23,8 +45,3 @@ class ArchiveService:
                 result["location"] = archive.location
         return result
 
-    def search_subway_name(self, subway_name: str):
-        return self.archive_repository.get_item_by_subway_name(subway_name)
-
-    def _get_archive_all(self):
-        return self.archive_repository.get_item_all()

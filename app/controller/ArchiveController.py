@@ -14,10 +14,10 @@ async def read_item(
         db: Session = Depends(get_db)
 ):
     archive_service = ArchiveService(db)
-    item = archive_service.get_near_archive(latitude, longitude)
-    if item is None:
-        raise HTTPException(status_code=404, detail="Item not found")
-    return item
+    response = archive_service.get_near_archive(latitude, longitude)
+    if response is None:
+        raise HTTPException(status_code=404, detail="response not found")
+    return response
 
 
 @router.get("/archive/search")
@@ -26,7 +26,7 @@ async def read_item(
         db: Session = Depends(get_db)
 ):
     archive_service = ArchiveService(db)
-    item = archive_service.search_subway_name(subway_name)
-    if item is None:
-        raise HTTPException(status_code=404, detail="Item not found")
-    return item
+    response = archive_service.search_subway_name(subway_name)
+    if response is None:
+        raise HTTPException(status_code=404, detail="response not found")
+    return response

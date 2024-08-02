@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from app.domain.entity.ArchiveEntity import ArchiveEntity
+from app.domain.entity.PathEntity import WayStartListEntity, Waypoint
 
 
 def init_db_data(db: Session):
@@ -465,10 +466,54 @@ def init_db_data(db: Session):
 
 
     db.add_all(ArchiveList)
-    db.commit()
+    way1 = WayStartListEntity(course_index=1, course_name="서울숲공원산책길 - 1", subway_name="뚝섬역", exit_number=8, latitude=37.5475313194254, longitude=127.046011419858, total_distance=2.5)
+    way2 = WayStartListEntity(course_index=2, course_name="서울테마산책길 서울숲 공원길", subway_name="뚝섬역", exit_number=8, latitude=37.5475313194254, longitude=127.046011419858, total_distance=3.4)
+    way3 = WayStartListEntity(course_index=3, course_name="창경궁 돌담길-광화문", subway_name="혜화역", exit_number=4, latitude=37.5835508380893, longitude=127.00131896511, total_distance=2.6)
+    way4 = WayStartListEntity(course_index=4, course_name="혜화역~창경궁 돌담길", subway_name="혜화역", exit_number=4, latitude=37.5835508380893, longitude=127.00131896511, total_distance=3.5)
+    db.add(way2)
+    waypointList1 = [
+        Waypoint(way_start_list=way1, latitude=37.5454064432249, longitude=127.042038262115, order=1, distance=0.7),
+        Waypoint(way_start_list=way1, latitude=37.5444245065945, longitude=127.041607715328, order=2, distance=0.1),
+        Waypoint(way_start_list=way1, latitude=37.5443755269936, longitude=127.039941456991, order=3, distance=0.2),
+        Waypoint(way_start_list=way1, latitude=37.5456187216417, longitude=127.040482452065, order=4, distance=0.1),
+        Waypoint(way_start_list=way1, latitude=37.5457340135383, longitude=127.039254742885, order=5, distance=0.1),
+        Waypoint(way_start_list=way1, latitude=37.5440829872158, longitude=127.039089800737, order=6, distance=0.3),
+        Waypoint(way_start_list=way1, latitude=37.5437270775397, longitude=127.039134877161, order=7, distance=0.1),
+        Waypoint(way_start_list=way1, latitude=37.5444844761414, longitude=127.037409632217, order=8, distance=0.2),
+        Waypoint(way_start_list=way1, latitude=37.5460969850985, longitude=127.038281763966, order=9, distance=0.2),
+        Waypoint(way_start_list=way1, latitude=37.5454199582090, longitude=127.042038269704, order=10, distance=0.3),
+        Waypoint(way_start_list=way1, latitude=37.5475628587840, longitude=127.046000123101, order=11, distance=0.7)
+    ]
+    waypointList2 = [
+        Waypoint(way_start_list=way2, latitude=37.5452666345233, longitude=127.042468183850, order=1, distance=0.7),
+        Waypoint(way_start_list=way2, latitude=37.5412669687354, longitude=127.040265110428, order=2, distance=0.5),
+        Waypoint(way_start_list=way2, latitude=37.5424891574049, longitude=127.036141313079, order=3, distance=0.5),
+        Waypoint(way_start_list=way2, latitude=37.5457054191222, longitude=127.037127345773, order=4, distance=0.4),
+        Waypoint(way_start_list=way2, latitude=37.5452666345233, longitude=127.042468183850, order=5, distance=0.6),
+        Waypoint(way_start_list=way2, latitude=37.5475628587840, longitude=127.046000123101, order=6, distance=0.7),
+    ]
 
+    waypointList3 = [
+        Waypoint(way_start_list=way3, latitude=37.5851275788037, longitude=127.001064251806, order=1, distance=0.2),
+        Waypoint(way_start_list=way3, latitude=37.5800819641192, longitude=126.996365938568, order=2, distance=0.7),
+        Waypoint(way_start_list=way3, latitude=37.5760455395978, longitude=126.997498179988, order=3, distance=0.5),
+        Waypoint(way_start_list=way3, latitude=37.5757031757421, longitude=126.976875251608, order=4, distance=2.1), ]
+
+    waypointList4 = [
+        Waypoint(way_start_list=way4, latitude=37.5851275788037, longitude=127.001064251806, order=1, distance=0.2),
+        Waypoint(way_start_list=way4, latitude=37.5800819641192, longitude=126.996365938568, order=2, distance=0.7),
+        Waypoint(way_start_list=way4, latitude=37.5760455395978, longitude=126.997498179988, order=3, distance=0.5),
+        Waypoint(way_start_list=way4, latitude=37.5764014418210, longitude=127.002009389889, order=4, distance=0.4),
+        Waypoint(way_start_list=way4, latitude=37.5835598479594, longitude=127.001324626064, order=5, distance=0.8),
+    ]
+    db.add_all(waypointList1)
+    db.add_all(waypointList2)
+    db.add_all(waypointList3)
+    db.add_all(waypointList4)
+    db.commit()
 
 def clear_db_data(db: Session):
     # 모든 데이터 삭제
     db.query(ArchiveEntity).delete()
+    db.query(WayStartListEntity).delete()
     db.commit()
