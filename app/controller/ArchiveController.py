@@ -5,8 +5,6 @@ from app.service.ArchiveService import ArchiveService
 
 router = APIRouter()
 
-
-
 @router.get("/archive")
 async def read_item(
         latitude: float = Query(..., description="Latitude of the location"),

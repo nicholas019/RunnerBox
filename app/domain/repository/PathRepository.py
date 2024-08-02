@@ -1,7 +1,5 @@
-from sqlalchemy import asc, desc
 from sqlalchemy.orm import Session, joinedload
-
-from app.domain.entity.PathEntity import WayStartListEntity, Waypoint
+from app.domain.entity.PathEntity import WayStartListEntity
 
 
 class PathRepository:
