@@ -24,4 +24,4 @@ class WayStartListEntity(Base):
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
     total_distance = Column(Float, nullable=False)
-    waypoints = relationship("Waypoint", back_populates="way_start_list")
+    waypoints = relationship("WaypointEntity", back_populates="way_start_list")
