@@ -16,7 +16,7 @@ async def path_choice(
         raise HTTPException(status_code=404, detail="No paths found")
     return response
 
-@router.get("/paths", summary="추천 코스 리스트 조회", description="<p>선택한 보관함이 있는 위치정보를 입력하면 추천 러닝코스를 반환합니다</p> <p>쿼리 스트링으로 latitude와 longitude를 받습니다.</p> <p>/paths?latitude=37.1234&longitude=127.1234</p>")
+@router.get("/paths", summary="추천 코스 리스트 조회", description="<p>선택한 보관함이 있는 위치정보를 입력하면 추천 러닝코스를 반환합니다</p> <p>쿼리 스트링으로 역이름과 출구번호를 받습니다.</p> <p>/paths?subway_name=혜화역&exit_number=8</p>")
 async def get_path_list(
         subway_name: str = Query(..., description="subway_name"),
         exit_number: str = Query(..., description="exit_number"),
