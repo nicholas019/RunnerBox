@@ -5,7 +5,7 @@ from app.service.ArchiveService import ArchiveService
 
 router = APIRouter()
 
-@router.get("/archive", summary="가장가까운 물품보관소 위치정보 조회", description="<p>위도와 경도 정보를 받아 가장 가까운 물품보관소 위치정보를 반환합니다.</p> <p>쿼리 스트링으로 latitude와 longitude를 받습니다.</p> <p>ex) /archive?latitude=37.1234&longitude=127.1234</p>")
+@router.get("/archive", summary="가장가까운 물품보관소 위치정보 조회", description="<p>위도와 경도 정보를 받아 가장 가까운 물품보관소 위치정보를 반환합니다.</p> <p>쿼리 스트링으로 latitude와 longitude를 받습니다.</p> <p>ex) /archive?latitude=37.1234&longitude=127.1234</p><p> 방송통신대학교 해화 :  37.57915170946982, 127.00284721208402 </p><p> 방송통신대학교 뚝섬 :  37.54736470290424, 127.04583591769747 </p>")
 async def read_item(
         latitude: float = Query(..., description="Latitude of the location"),
         longitude: float = Query(..., description="Longitude of the location"),
