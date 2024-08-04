@@ -5,9 +5,9 @@ from app.config import db_config
 from app.config.init_db_data import init_db_data, clear_db_data
 from app.controller import ArchiveController, PathController
 
-app = FastAPI()
 
 db_config.Base.metadata.create_all(bind=db_config.engine)
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -23,7 +23,6 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
-# 여기에 실제 라우터를 추가해야 합니다. 예를 들어:
 app.include_router(ArchiveController.router)
 app.include_router(PathController.router)
 

@@ -13,7 +13,7 @@ class ArchiveService:
     def get_near_archive(self, latitude: float, longitude: float):
         archive_all_list = self._get_archive_all()
 
-        return self._format_lacation(archive_all_list, latitude, longitude)
+        return self._format_location(archive_all_list, latitude, longitude)
 
     """
     역이름으로 보관소 위치 검색
@@ -30,7 +30,8 @@ class ArchiveService:
     """
     거리측정 결과 포맷팅 함수
     """
-    def _format_lacation(self, archive_all_list, latitude, longitude):
+    @staticmethod
+    def _format_location(archive_all_list, latitude, longitude):
         result = {"subway_name": "", "exit_number": "", "location": "",
                   "start_point": {"latitude": latitude, "longitude": longitude},
                   "end_point": {"latitude": 0, "longitude": 0}, "distance": 100000}
@@ -44,4 +45,3 @@ class ArchiveService:
                 result["exit_number"] = archive.exit_number
                 result["location"] = archive.location
         return result
-

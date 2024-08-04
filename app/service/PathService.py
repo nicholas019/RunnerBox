@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Session
-
 from app.domain.repository.PathRepository import PathRepository
 
 

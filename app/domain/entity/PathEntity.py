@@ -1,9 +1,9 @@
 from sqlalchemy import Column, Integer, Float, ForeignKey, String
 from sqlalchemy.orm import relationship
-
 from app.config.db_config import Base
 
-class Waypoint(Base):
+
+class WaypointEntity(Base):
     __tablename__ = "waypoints"
     id = Column(Integer, primary_key=True, index=True)
     way_start_list_id = Column(Integer, ForeignKey("way_start_list.id"))
@@ -12,6 +12,7 @@ class Waypoint(Base):
     order = Column(Integer, nullable=False)
     distance = Column(Float, nullable=False)
     way_start_list = relationship("WayStartListEntity", back_populates="waypoints")
+
 
 class WayStartListEntity(Base):
     __tablename__ = "way_start_list"
