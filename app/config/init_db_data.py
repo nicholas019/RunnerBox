@@ -471,7 +471,7 @@ def init_db_data(db: Session):
                               latitude=37.5475313194254, longitude=127.046011419858, total_distance=3.4)
     way3 = WayStartListEntity(course_index=3, course_name="창경궁 - 종묘 코스", subway_name="혜화역", exit_number=4,
                               latitude=37.5835508380893, longitude=127.00131896511, total_distance=4.3)
-    way4 = WayStartListEntity(course_index=4, course_name="혜화역~창경궁 돌담길 코스", subway_name="혜화역", exit_number=4,
+    way4 = WayStartListEntity(course_index=4, course_name="혜화역 - 서울대병원 둘래길", subway_name="혜화역", exit_number=4,
                               latitude=37.5835508380893, longitude=127.00131896511, total_distance=3.5)
     way5 = WayStartListEntity(course_index=5, course_name="서울숲공원 외각코스 - 1", subway_name="뚝섬역", exit_number=8,
                               latitude=37.5475313194254, longitude=127.046011419858, total_distance=2.6)
