@@ -5,6 +5,7 @@ from app.config.db_config import Base
 class ArchiveEntity(Base):
     __tablename__ = "archive"
     id = Column(Integer, primary_key=True, index=True)
+    thumbnail = Column(String, nullable=True, default=None)
     subway_number = Column(Integer)
     subway_name = Column(String)
     archive_name = Column(String)
